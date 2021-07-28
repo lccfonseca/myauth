@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/layout-simples.html}">
+    <head>
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <div th:switch="${users}">
+                <div class="card-header">
+                    Usuários
+                </div>
+                <br/>
+                <h4 th:case="null">Nenhum registro encontrato!</h4>
+                <div th:case="*">
+                    <table id="myTable" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>E-Mail</th>
+                                <th>Enabled</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="user : ${users}">
+                                <td th:text="${user.name}"></td>
+                                <td th:text="${user.email}"></td>
+                                <td th:text="${user.enabled}"></td>
+                                <td><a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a></td>
+                                <td><a th:href="@{/users/delete/{id}(id=${user.id})}"
+                                       id="btnDelete"
+                                       class="delete"
+                                       data-confirm="Confirma a exclusão?">
+                                        Delete</a></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>E-Mail</th>
+                                <th>Enabled</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <a href="/users/add" class="btn btn-primary">Novo</a>
+            </div>
+        </section>
+    </body>
+</html>
