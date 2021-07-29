@@ -9,6 +9,6 @@ package app.helice.myauth.controller;
  *
  * @author lccf
  */
-public class MicroserviceController {
+public class ApplicationController {
     
 }
