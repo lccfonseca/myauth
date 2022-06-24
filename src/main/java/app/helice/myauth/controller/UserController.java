@@ -5,8 +5,13 @@
  */
 package app.helice.myauth.controller;
 
+import app.helice.myauth.model.Role;
 import app.helice.myauth.model.User;
+import app.helice.myauth.repository.RoleRepository;
 import app.helice.myauth.repository.UserRepository;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,6 +33,8 @@ public class UserController {
     
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private RoleRepository repositoryRole;
     @Autowired
     private PasswordEncoder passwordEncoder;
     
@@ -51,8 +58,14 @@ public class UserController {
         }
         
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
+               
+        Role r = repositoryRole.findById(Integer.toUnsignedLong(2)).get();
+        HashSet hsr = new HashSet<Role>();
+        hsr.add(r);
+        user.setRoles(hsr);
+        
         repository.save(user);
+        
         return "redirect:/users/";
     }
     

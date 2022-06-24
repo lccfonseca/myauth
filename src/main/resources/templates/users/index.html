@@ -20,6 +20,7 @@
                                 <th>Name</th>
                                 <th>E-Mail</th>
                                 <th>Enabled</th>
+                                <th>Papéis</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
@@ -29,10 +30,19 @@
                                 <td th:text="${user.name}"></td>
                                 <td th:text="${user.email}"></td>
                                 <td th:text="${user.enabled}"></td>
-                                <td><a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a></td>
+                                <td>
+                                    <span th:each="role : ${user.roles}">
+                                        <span th:text="${role.name}"
+                                              class="badge rounded-pill bg-secondary">
+                                        </span>
+                                    </span>
+                                </td>
+                                <td><a th:href="@{/users/edit/{id}(id=${user.id})}"
+                                       class="btn btn-primary btn-sm"
+                                       >Edit</a></td>
                                 <td><a th:href="@{/users/delete/{id}(id=${user.id})}"
                                        id="btnDelete"
-                                       class="delete"
+                                       class="delete btn btn-danger btn-sm"
                                        data-confirm="Confirma a exclusão?">
                                         Delete</a></td>
                             </tr>
@@ -42,6 +52,7 @@
                                 <th>Name</th>
                                 <th>E-Mail</th>
                                 <th>Enabled</th>
+                                <th>Papéis</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
