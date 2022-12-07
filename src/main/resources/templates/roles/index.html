@@ -25,12 +25,18 @@
                         <tbody>
                             <tr th:each="role : ${roles}">
                                 <td th:text="${role.name}"></td>
-                                <td><a th:href="@{/roles/edit/{id}(id=${role.id})}">Edit</a></td>
+                                <td><a th:href="@{/roles/edit/{id}(id=${role.id})}"
+                                       class="btn btn-primary btn-sm">
+                                        Edit
+                                    </a>
+                                </td>
                                 <td><a th:href="@{/roles/delete/{id}(id=${role.id})}"
                                        id="btnDelete"
-                                       class="delete"
+                                       class="delete btn btn-danger btn-sm"
                                        data-confirm="Confirma a exclusão?">
-                                        Delete</a></td>
+                                        Delete
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                         <tfoot>

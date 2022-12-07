@@ -10,8 +10,6 @@ import app.helice.myauth.model.User;
 import app.helice.myauth.repository.RoleRepository;
 import app.helice.myauth.repository.UserRepository;
 import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
