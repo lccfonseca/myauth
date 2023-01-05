@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/layout-simples.html}">
+    <head>
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <div th:switch="${logs}">
+                <div class="card-header">
+                    Logs da aplicação
+                </div>
+                <br/>
+                <h4 th:case="null">Nenhum registro encontrato!</h4>
+                <div th:case="*">
+                    <table id="myTable" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Usuário</th>
+                                <th>Ação</th>
+                                <th>Status</th>
+                                <th>Tabela/Rota</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="log : ${logs}">
+                                <td th:text="${log.log_date}"></td>
+                                <td th:text="${log.user}"></td>
+                                <td th:text="${log.action}"></td>
+                                <td th:text="${log.status}"></td>
+                                <td th:text="${log.table_route}"></td>                               
+                                <td><a th:href="@{/logs/view/{id}(id=${log.id})}"
+                                       id="btnDelete"
+                                       class="delete btn btn-danger btn-sm"
+                                       data-confirm="Confirma a exclusão?">
+                                        Detalhes
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Data</th>
+                                <th>Usuário</th>
+                                <th>Ação</th>
+                                <th>Status</th>
+                                <th>Tabela/Rota</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

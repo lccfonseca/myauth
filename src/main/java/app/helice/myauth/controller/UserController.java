@@ -58,7 +58,7 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
                
         Role r = repositoryRole.findById(Integer.toUnsignedLong(2)).get();
-        HashSet hsr = new HashSet<Role>();
+        HashSet<Role> hsr = new HashSet<Role>();
         hsr.add(r);
         user.setRoles(hsr);
         
