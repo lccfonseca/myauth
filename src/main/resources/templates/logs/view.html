@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{fragments/layout-simples.html}">
+    <head>
+    </head>
+    <body>
+        <section layout:fragment="content">               
+            <ul>
+                <li>User: <p th:text="${log.user}"></p></li>
+                <li>Data: <p th:text="${log.log_date}"></p></li>
+                <li>Rota ou Tabela: <p th:text="${log.table_route}"></p></li>
+                <li>Ação: <p th:text="${log.action}"></p></li>
+                <li>Dado registrado: <p th:text="${log.data_json}"></p></li>
+            </ul> 
+        </section>
+
+    </body>
+</html>

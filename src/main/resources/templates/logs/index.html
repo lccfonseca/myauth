@@ -33,9 +33,8 @@
                                 <td th:text="${log.status}"></td>
                                 <td th:text="${log.table_route}"></td>                               
                                 <td><a th:href="@{/logs/view/{id}(id=${log.id})}"
-                                       id="btnDelete"
-                                       class="delete btn btn-danger btn-sm"
-                                       data-confirm="Confirma a exclusão?">
+                                       id="btnView"
+                                       class="btn btn-primary btn-sm">
                                         Detalhes
                                     </a>
                                 </td>
